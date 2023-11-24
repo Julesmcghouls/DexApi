@@ -1,7 +1,7 @@
 const MAX_POKEMON = 151;
 //variables storing references to various HTML elements in the document.
 const listWrapper = document.querySelector(".list-wrapper");
-const searchInput = document.querySelector("#search.input");
+const searchInput = document.querySelector("#search-input");
 const numberFilter = document.querySelector("#number");
 const nameFilter = document.querySelector("#name");
 const notFoundMessage = document.querySelector("#not-found-message");
@@ -44,16 +44,16 @@ function displayPokemons(pokemon) {
         const listItem = document.createElement("div");
         listItem.className = "list-item";
         listItem.innerHTML = `
-        
-        <div class="number-wrap">
-            <p class="caption-fonts"><${pokemonId}/p>
-        </div>
-        <div class="image-wrap">
+    <div class="number-wrap">
+        <p class="caption-fonts">${pokemonId}</p>
+    </div>
+    <div class="image-wrap">
         <img src="https://raw.githubusercontent.com/pokeapi/sprites/master/sprites/pokemon/other/dream-world/${pokemonId}.svg" alt="${pokemon.name}" />
     </div>
     <div class="name-wrap">
-    <p class="body3-fonts"><#${pokemon.name}/p>
-</div>`;
+        <p class="body3-fonts">${pokemon.name}</p>
+    </div>
+`;
 
 listItem.addEventListener("click", async () => {
     const success = await fetchPokemonDataBeforeRedirect(pokemonId);
