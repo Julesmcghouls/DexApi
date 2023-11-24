@@ -36,6 +36,7 @@ async function fetchPokemonDataBeforeRedirect(id) {
         console.error("Failed to fetch Pokemon data before redirect");
     }
 }
+
 function displayPokemons(pokemon) {
     listWrapper.innerHTML = " ";
 
@@ -64,4 +65,33 @@ listItem.addEventListener("click", async () => {
 
 listWrapper.appendChild(listItem);
     });
+}
+
+searchInput.addEventListener("keyup", handleSearch)
+
+function handleSearch() {
+    const searchTerm = searchInput.value.toLowerCase(); // Access the value of the input field directly
+
+    let filteredPokemons;
+
+    if (numberFilter.checked) {
+        filteredPokemons = allPokemons.filter((pokemon) => {
+            const pokemonId = pokemon.url.split("/")[6];
+            return pokemonId.startsWith(searchTerm);
+        });
+    } else if (nameFilter.checked) {
+        filteredPokemons = allPokemons.filter((pokemon) => {
+            return pokemon.name.toLowerCase().startsWith(searchTerm);
+        });
+    } else {
+        filteredPokemons = allPokemons;
+    }
+
+    displayPokemons(filteredPokemons);
+
+    if (filteredPokemons.length === 0) {
+        notFoundMessage.style.display = "block";
+    } else {
+        notFoundMessage.style.display = "none";
+    }
 }
