@@ -92,3 +92,16 @@ function setElementStyles(elements, cssProperty, value) {
         element.style[cssProperty] = value;
     });
 }
+
+function rgbaFromHex(hexColor) {
+    return [
+        parseInt(hexColor.slice(1, 3), 16),
+        parseInt(hexColor.slice(3, 5), 16),
+        parseInt(hexColor.slice(5, 7), 16),
+    ].join(", ");
+}
+
+function setTypeBackgroundColor(pokemon) {
+    const mainType = pokemon.types.name;
+    const color = typeColors(mainType)
+}
