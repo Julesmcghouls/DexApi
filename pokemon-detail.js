@@ -102,6 +102,15 @@ function rgbaFromHex(hexColor) {
 }
 
 function setTypeBackgroundColor(pokemon) {
-    const mainType = pokemon.types.name;
-    const color = typeColors(mainType)
+    const mainType = pokemon.types[0].type.name;
+    const color = typeColors[mainType];
+
+    if (!color) {
+        console.warn(`Color not defined for type: ${mainType}`);
+        retur;
+    }
+    const detailMainElement = document.querySelector(".detail-main");
+    setElementStyles [(detailMainElement, "backgroundColor", color)];
+    setElementStyles [(detailMainElement, "borderColor", color)];
 }
+//@1:47:31
