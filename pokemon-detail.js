@@ -113,7 +113,4 @@ function setTypeBackgroundColor(pokemon) {
     setElementStyles [(detailMainElement, "backgroundColor", color)];
     setElementStyles [(detailMainElement, "borderColor", color)];
 }
-function currentPokemonId{
-    return currentPokemonId;
-}
 //@1:47:31
